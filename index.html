@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FitMate — Personal Fitness & Diet Companion</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo">
+        <div class="mark">FM</div>
+        <div>
+          <div class="brand">FitMate</div>
+          <div class="tiny">Personal Fitness & Diet Companion</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#how">How it works</a>
+        <a href="#meals">Meals</a>
+        <a href="#pricing">Pricing</a>
+        <a class="btn" href="#signup">Get Started</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="pill">Personalized • Meal Delivery • Expert Plans</div>
+          <h1>Fitness and nutrition plans made for your life — not the other way around.</h1>
+          <p>Customized workouts, nutritionally-balanced meals, and expert coaching delivered to your doorstep.</p>
+
+          <div class="card">
+            <div class="profile-row">
+              <div class="avatar">VP</div>
+              <div>
+                <div style="font-weight:700">Welcome, <span id="userNamePreview">Friend</span></div>
+                <div class="tiny muted">Tell us a bit to generate a starter plan</div>
+              </div>
+            </div>
+
+            <form id="quickForm" onsubmit="return false;">
+              <div class="grid-2 form-row">
+                <div>
+                  <label for="name">Full name</label>
+                  <input id="name" type="text" placeholder="e.g., hima" />
+                </div>
+                <div>
+                  <label for="age">Age</label>
+                  <input id="age" type="number" min="10" max="100" placeholder="25" />
+                </div>
+              </div>
+
+              <div class="grid-2 form-row">
+                <div>
+                  <label for="height">Height (cm)</label>
+                  <input id="height" type="number" min="100" max="230" placeholder="170" />
+                </div>
+                <div>
+                  <label for="weight">Weight (kg)</label>
+                  <input id="weight" type="number" min="30" max="250" placeholder="70" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div style="width:100%">
+                  <label for="goal">Fitness goal</label>
+                  <select id="goal">
+                    <option value="maintain">Maintain weight</option>
+                    <option value="lose">Lose weight</option>
+                    <option value="gain">Gain muscle</option>
+                    <option value="manage">Manage condition (e.g., diabetes)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display:flex;gap:8px;margin-top:10px;">
+                <button class="btn" id="generateBtn">Generate Plan</button>
+                <button type="button" class="secondary" id="demoBtn">Try Demo</button>
+              </div>
+
+              <div id="planOutput" class="plan-output" hidden></div>
+            </form>
+          </div>
+        </div>
+
+        <aside>
+          <div class="card center" style="height:100%;flex-direction:column;">
+            <h3>Starter Plan Snapshot</h3>
+            <p class="muted tiny">A quick, balanced plan created from your inputs.</p>
+
+            <div id="snapshot">
+              <div class="snapshot-row">
+                <span>Calories/day</span>
+                <strong id="calories">—</strong>
+              </div>
+              <div class="snapshot-row">
+                <span>Workout</span>
+                <strong id="workouts">—</strong>
+              </div>
+              <div class="snapshot-row">
+                <span>Meals/week</span>
+                <strong id="mealsCount">—</strong>
+              </div>
+            </div>
+
+            <a href="#signup" class="btn" style="margin-top:14px">Subscribe & Order</a>
+          </div>
+        </aside>
+      </section>
+
+      <section id="meals" class="section">
+        <h2>Sample Meals</h2>
+        <p class="muted">Fresh, portion-controlled and nutritionally balanced meals.</p>
+
+        <div class="meals">
+          <div class="meal">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=60" alt="Salmon">
+            <h4>Grilled Salmon & Quinoa</h4>
+            <p class="muted tiny">High protein, omega-3s — 420 kcal</p>
+          </div>
+
+          <div class="meal">
+            <img src="https://images.unsplash.com/photo-1604908177522-6d6e1bc4c4b6?auto=format&fit=crop&w=800&q=60" alt="Chicken Salad">
+            <h4>Herb Chicken Salad</h4>
+            <p class="muted tiny">Lean protein & fiber — 350 kcal</p>
+          </div>
+
+          <div class="meal">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=60" alt="Vegan Bowl">
+            <h4>Power Vegan Bowl</h4>
+            <p class="muted tiny">Plant proteins & healthy fats — 410 kcal</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="section">
+        <h2>Pricing & Plans</h2>
+        <p class="muted">Choose a plan that fits your goals.</p>
+
+        <div class="pricing">
+          <div class="price-card">
+            <h3>Starter</h3>
+            <div class="price">₹499 / month</div>
+            <p class="muted tiny">Basic plan — personalized workouts</p>
+            <button class="btn" onclick="selectPlan('Starter',499)">Choose Starter</button>
+          </div>
+
+          <div class="price-card">
+            <h3>Pro</h3>
+            <div class="price">₹1,499 / month</div>
+            <p class="muted tiny">Includes meal guidance & consult</p>
+            <button class="btn" onclick="selectPlan('Pro',1499)">Choose Pro</button>
+          </div>
+
+          <div class="price-card">
+            <h3>Premium</h3>
+            <div class="price">₹3,499 / month</div>
+            <p class="muted tiny">Full meal delivery + coaching</p>
+            <button class="btn" onclick="selectPlan('Premium',3499)">Choose Premium</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="signup">
+        <h2>Sign up for a free trial</h2>
+        <p class="muted">Start with a 7-day trial.</p>
+
+        <div class="card signup-box">
+          <input id="email" type="text" placeholder="Your email address" />
+          <div class="signup-buttons">
+            <button class="btn" onclick="subscribe()">Start Free Trial</button>
+            <button class="secondary" onclick="demoFill()">Auto-fill Demo</button>
+          </div>
+          <div id="signupMsg" class="muted tiny"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="copyYear"></span> FitMate. All rights reserved.</div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
